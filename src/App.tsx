@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import Drawer from './components/drawer';
+import Map from './components/map';
 import debounce from 'lodash.debounce';
 import { setDevice } from './store/actions/app';
 
@@ -16,10 +17,11 @@ const App = () => {
     }
 
     return (
-        <React.Fragment>
-            <div>React App</div>
-            <Drawer />
-        </React.Fragment>
+        <Map>
+            <Drawer>
+                <React.Fragment />
+            </Drawer>
+        </Map>
     );
 };
 

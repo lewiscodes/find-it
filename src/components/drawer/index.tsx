@@ -1,23 +1,31 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { useSelector } from 'react-redux';
 import { IReduxStore } from '../../store/types';
-import { Drawer, IDrawerProps } from '@blueprintjs/core';
+import { Classes } from '@blueprintjs/core';
+import cx from '../../utils/classnames';
+import AppDrawerHeader from './drawerHeader';
 
-const AppDrawer = () => {
+const AppDrawer = ({ children }: { children: ReactElement }) => {
     const device = useSelector((state: IReduxStore) => state.app.device);
-    const drawerProps: IDrawerProps = {
-        isOpen: true,
-        hasBackdrop: false,
-        title: 'Find It',
-        position: device === 'DESKTOP' ? 'right' : 'bottom',
-        size: Drawer.SIZE_SMALL,
-        icon: 'path-search',
-        isCloseButtonShown: device === 'MOBILE'
-    };
-
+    const drawerClasses: string = cx([
+        { [Classes.DRAWER]: true },
+        { [Classes.OVERLAY_CONTENT]: true },
+        { [Classes.POSITION_RIGHT]: device === 'DESKTOP' },
+        { [Classes.POSITION_BOTTOM]: device=== 'MOBILE' }
+    ]);
     
     return (
-        <Drawer {...drawerProps} />
+        <React.Fragment>
+            <div
+                className={drawerClasses}
+                style={{ width: device === 'DESKTOP' ? 360 : '100%' }}
+            >
+                <AppDrawerHeader />
+                <div className={Classes.DRAWER_BODY}>
+                    { children }
+                </div>
+            </div>
+        </React.Fragment>
     )
 };
 
