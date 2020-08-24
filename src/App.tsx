@@ -4,6 +4,7 @@ import Drawer from './components/drawer';
 import Map from './components/map';
 import debounce from 'lodash.debounce';
 import { setDevice } from './store/actions/app';
+import PlaceCard from './components/placeCard';
 
 const App = () => {
     useEffect(() => {
@@ -19,7 +20,7 @@ const App = () => {
     return (
         <Map>
             <Drawer>
-                <React.Fragment />
+                <PlaceCard />
             </Drawer>
         </Map>
     );

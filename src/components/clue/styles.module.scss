@@ -1,0 +1,35 @@
+.clueContainer {
+    margin: 0.5rem;
+}
+
+.clue {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}
+
+.diamond {
+    display: inline-block;
+    padding: 10px;
+    background-color: rgba(19, 124, 189, 0.15);
+    border-radius: 5px;
+    transform: rotate(45deg);
+    align-self: center;
+}
+
+.icon {
+    color: #106ba3;
+    align-self: center;
+}
+
+.iconRotate {
+    transform: rotate(-45deg);
+}
+
+.text {
+    user-select: none;
+}
+
+.textHover {
+    text-decoration: underline;
+}
